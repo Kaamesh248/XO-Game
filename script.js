@@ -120,7 +120,7 @@ function restartGame() {
 
     cells.forEach(cell => {
 
-        cell.textContent = "";
+        cell.textContent = "";  // Backend update by collobrator
 
     });
 
