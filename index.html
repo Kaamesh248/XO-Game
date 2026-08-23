@@ -1,9 +1,9 @@
-index.html
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>XO Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XO Game | Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,9 +11,24 @@ index.html
 
     <div class="game-container">
 
+        <p class="eyebrow">Tic-Tac-Toe</p>
         <h1>XO Game</h1>
 
         <p id="status">Player X's Turn</p>
+
+        <div class="scoreboard" aria-label="Scoreboard">
+            <div class="score-card score-card-x">
+                <span class="player-label">Player</span>
+                <strong class="player-mark">X</strong>
+                <span id="scoreX" class="score-value">0</span>
+            </div>
+            <div class="score-divider" aria-hidden="true">:</div>
+            <div class="score-card score-card-o">
+                <span class="player-label">Player</span>
+                <strong class="player-mark">O</strong>
+                <span id="scoreO" class="score-value">0</span>
+            </div>
+        </div>
 
         <div class="board">
             <button class="cell" data-index="0"></button>
@@ -29,7 +44,10 @@ index.html
             <button class="cell" data-index="8"></button>
         </div>
 
-        <button id="restartBtn">Restart Game</button>
+        <div class="actions">
+            <button id="restartBtn" class="primary-button">New Round</button>
+            <button id="resetScoreBtn" class="secondary-button">Reset Score</button>
+        </div>
 
     </div>
 

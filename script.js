@@ -1,9 +1,16 @@
+if (typeof document === "undefined") {
+    console.log("XO Game is a browser game. Open index.html in a web browser.");
+} else {
 const cells = document.querySelectorAll(".cell");
 const statusText = document.getElementById("status");
 const restartBtn = document.getElementById("restartBtn");
+const resetScoreBtn = document.getElementById("resetScoreBtn");
+const scoreXText = document.getElementById("scoreX");
+const scoreOText = document.getElementById("scoreO");
 
 let currentPlayer = "X";
 let gameActive = true;
+let scores = { X: 0, O: 0 };
 
 let board = ["", "", "", "", "", "", "", "", ""];
 
@@ -66,7 +73,9 @@ function checkWinner() {
 
     if (winner) {
 
-        statusText.textContent = "Player " + currentPlayer + " Wins 🎉";
+        scores[currentPlayer]++;
+        updateScoreboard();
+        statusText.textContent = "Player " + currentPlayer + " wins!";
         gameActive = false;
         return;
 
@@ -75,7 +84,7 @@ function checkWinner() {
 
     if (!board.includes("")) {
 
-        statusText.textContent = "Game Draw 🤝";
+        statusText.textContent = "It's a draw!";
         gameActive = false;
         return;
 
@@ -105,6 +114,7 @@ function changePlayer() {
 
 // Restart button
 restartBtn.addEventListener("click", restartGame);
+resetScoreBtn.addEventListener("click", resetScore);
 
 
 // Restart game function
@@ -120,8 +130,20 @@ function restartGame() {
 
     cells.forEach(cell => {
 
-        cell.textContent = "";  // Backend update by collobrator
+        cell.textContent = "";
 
     });
 
+}
+
+function updateScoreboard() {
+    scoreXText.textContent = scores.X;
+    scoreOText.textContent = scores.O;
+}
+
+function resetScore() {
+    scores = { X: 0, O: 0 };
+    updateScoreboard();
+    restartGame();
+}
 }
